@@ -1,10 +1,25 @@
-FROM node:10.13.0 AS build
+FROM node:12.18.2-slim
 
-RUN apt-get update && \
-    apt-get install -y rsync openjdk-8-jre-headless chromedriver xvfb libgtk-3-0 && \
-    rm -r /var/lib/apt/lists/* && \
-    npm install -g bower && \
-    npm install -g vue-cli && \
-    npm install -g pm2 -g
+RUN apt update && \
+    apt install -y --no-install-recommends \
+        bash \
+        procps \
+        libgtk2.0-0 \
+        libgtk-3-0 \
+        libgbm-dev \
+        libnotify-dev \
+        libgconf-2-4 \
+        libnss3 \
+        libxss1 \
+        libasound2 \
+        libxtst6 \
+        xauth \
+        xvfb && \
+    rm -r /var/lib/apt/lists/*
+
+RUN yarn global add @nestjs/cli && \
+    yarn global add pm2
 
 RUN mkdir -p /var/www
+
+WORKDIR /var/www
