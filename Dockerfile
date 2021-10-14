@@ -4,6 +4,7 @@ RUN apt update && \
     apt install -y --no-install-recommends \
         bash \
         procps \
+        curl \
         libgtk2.0-0 \
         libgtk-3-0 \
         libgbm-dev \
