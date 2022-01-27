@@ -1,4 +1,4 @@
-FROM node:12.18.2-slim
+FROM node:16.10-slim
 
 RUN apt update && \
     apt install -y --no-install-recommends \
@@ -18,7 +18,7 @@ RUN apt update && \
         xvfb && \
     rm -r /var/lib/apt/lists/*
 
-RUN yarn global add @nestjs/cli && \
+RUN yarn global add @angular/cli && \
     yarn global add pm2
 
 RUN mkdir -p /var/www

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-REGISTRY=registry.hub.docker.com
+REGISTRY=registry-1.docker.io
 
 function build() {
         docker build --build-arg BUILDPATH=./build/${1} -t "${REGISTRY}/${1}" -f ./Dockerfile .
-        docker tag  "${REGISTRY}/${1}" "${REGISTRY}/${1}:v10.13.0"
-        docker push "${REGISTRY}/${1}:v10.13.0"
+        docker tag  "${REGISTRY}/${1}" "${REGISTRY}/${1}:v16.10"
+        docker push "${REGISTRY}/${1}:v16.10"
         docker push "${REGISTRY}/${1}"
 }
 
